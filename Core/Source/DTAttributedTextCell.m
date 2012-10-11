@@ -63,7 +63,6 @@
 
 - (CGFloat)requiredRowHeightInTableView:(UITableView *)tableView
 {
-	
 	CGFloat contentWidth = tableView.frame.size.width;
 
 	// reduce width for accessories
