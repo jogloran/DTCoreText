@@ -272,7 +272,17 @@ static Class _layerClassToUseForDTAttributedTextContentView = nil;
 							if (existingAttachmentView)
 							{
 								existingAttachmentView.hidden = NO;
-								existingAttachmentView.frame = frameForSubview;
+
+								if ([existingAttachmentView isKindOfClass: [UIScrollView class]]) {
+									UIScrollView* s = (UIScrollView*)existingAttachmentView;
+									s.contentSize = frameForSubview.size;
+									s.contentOffset = CGPointZero;
+									DTLazyImageView* iv = [s.subviews objectAtIndex: 0];
+									iv.frame = CGRectMake(0, 0, iv.frame.size.width, iv.frame.size.height);
+//									iv.bounds = CGRectMake(0, 0, 0, iv.bounds.size.height);
+								} else {
+									existingAttachmentView.frame = frameForSubview;
+								}
 								
 								existingAttachmentView.alpha = 1;
 								[existingAttachmentView setNeedsLayout];

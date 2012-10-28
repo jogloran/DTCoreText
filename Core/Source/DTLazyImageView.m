@@ -63,6 +63,15 @@ static NSCache *_imageCache = nil;
 	}
 }
 
+- (void) setFrame:(CGRect)frame {
+	
+	[super setFrame: frame];
+}
+
+- (void)setBounds:(CGRect)bounds {
+	[super setBounds: bounds];
+}
+
 - (void)didMoveToSuperview
 {
 	[super didMoveToSuperview];
