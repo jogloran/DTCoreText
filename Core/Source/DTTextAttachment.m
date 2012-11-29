@@ -230,6 +230,9 @@
 	{
 		case DTTextAttachmentVerticalAlignmentBaseline:
 		{
+			if (self.contentType == DTTextAttachmentTypeImage) {
+				return MIN(300, _displaySize.height);
+			}
 			return _displaySize.height;
 		}
 		case DTTextAttachmentVerticalAlignmentTop:

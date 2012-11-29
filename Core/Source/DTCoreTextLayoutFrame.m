@@ -1141,7 +1141,6 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 	{
 		return CGRectZero;
 	}
-	
 	return _frame;
 }
 

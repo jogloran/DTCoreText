@@ -1,4 +1,4 @@
-//
+ //
 //  TextView.m
 //  CoreTextExtensions
 //
@@ -280,7 +280,8 @@ static Class _layerClassToUseForDTAttributedTextContentView = nil;
 
 								if ([existingAttachmentView isKindOfClass: [UIScrollView class]]) {
 									UIScrollView* s = (UIScrollView*)existingAttachmentView;
-									s.contentSize = frameForSubview.size;
+//									s.contentSize = frameForSubview.size;
+									s.contentSize = attachment.originalSize;
 									s.contentOffset = CGPointZero;
 									DTLazyImageView* iv = [s.subviews objectAtIndex: 0];
 									iv.frame = CGRectMake(0, 0, iv.frame.size.width, iv.frame.size.height);
