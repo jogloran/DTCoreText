@@ -570,6 +570,10 @@ static Class _layerClassToUseForDTAttributedTextContentView = nil;
 	}
 }
 
+- (void)setBounds:(CGRect)bounds {
+	[super setBounds: bounds];
+}
+
 - (void)setFrame:(CGRect)frame //relayoutText:(BOOL)relayoutText
 {
 	CGRect oldFrame = self.frame;
