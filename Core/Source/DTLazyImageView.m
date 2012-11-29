@@ -69,6 +69,10 @@ static NSCache *_imageCache = nil;
 	}
 }
 
+- (CGRect)bounds {
+	return [super bounds];
+}
+
 - (void) setFrame:(CGRect)frame {
 	
 	[super setFrame: frame];
@@ -181,7 +185,7 @@ static NSCache *_imageCache = nil;
 	if ([self.delegate respondsToSelector:@selector(lazyImageView:didChangeImageSize:)]) {
 		[self.delegate lazyImageView:self didChangeImageSize:CGSizeMake(_fullWidth, _fullHeight)];
 	}
-//	[[NSNotificationCenter defaultCenter] postNotificationName:@"DTLazyImageViewDidFinishLoading" object:nil userInfo:userInfo];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DTLazyImageViewDidFinishLoading" object:nil userInfo:nil];
 }
 
 - (void)completeDownloadWithData:(NSData *)data
