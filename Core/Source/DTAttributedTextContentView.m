@@ -281,11 +281,27 @@ static Class _layerClassToUseForDTAttributedTextContentView = nil;
 								if ([existingAttachmentView isKindOfClass: [UIScrollView class]]) {
 									UIScrollView* s = (UIScrollView*)existingAttachmentView;
 //									s.contentSize = frameForSubview.size;
+									
+									CGRect screenBounds = [[UIScreen mainScreen] applicationFrame];
+									UIInterfaceOrientation o = [UIApplication sharedApplication].statusBarOrientation;
+									CGFloat horizontalExtent =
+										UIInterfaceOrientationIsPortrait(o) ?
+										screenBounds.size.width :
+										screenBounds.size.height;
+									CGFloat scrollViewHeight =
+										UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ?
+										300 :
+										450;
+										
+									s.frame = CGRectMake(frameForSubview.origin.x,
+														 frameForSubview.origin.y,
+														 horizontalExtent - 40,
+														 scrollViewHeight);
+									
 									s.contentSize = attachment.originalSize;
 									s.contentOffset = CGPointZero;
 									DTLazyImageView* iv = [s.subviews objectAtIndex: 0];
 									iv.frame = CGRectMake(0, 0, iv.frame.size.width, iv.frame.size.height);
-//									iv.bounds = CGRectMake(0, 0, 0, iv.bounds.size.height);
 								} else {
 									existingAttachmentView.frame = frameForSubview;
 								}

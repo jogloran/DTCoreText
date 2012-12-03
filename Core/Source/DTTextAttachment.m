@@ -231,7 +231,11 @@
 		case DTTextAttachmentVerticalAlignmentBaseline:
 		{
 			if (self.contentType == DTTextAttachmentTypeImage) {
-				return MIN(300, _displaySize.height);
+				CGFloat scrollViewHeight =
+					UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ?
+					300 :
+					450;
+                return scrollViewHeight;
 			}
 			return _displaySize.height;
 		}
